@@ -1,0 +1,42 @@
+.registration-body{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 10px;
+    height: 100vh;
+}
+
+.stepper-indicator{
+    grid-column: span 2;
+    background-color: #000306;
+}
+
+/*.main-content{
+    grid-column: span 8;
+    background-color: #f8fbf8;
+
+}*/
+
+.number-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #c0c2c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.number.active {
+    background-color: #ffa500; /* or any other color you prefer */
+    /* additional styles for active number */
+}

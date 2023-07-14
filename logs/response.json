@@ -1,0 +1,73 @@
+{
+  "level": "info",
+  "message": {
+    "data": {
+      "amount": 20,
+      "authorization": {
+        "account_name": null,
+        "authorization_code": "AUTH_wxvf56wehg",
+        "bank": "MTN",
+        "bin": "027XXX",
+        "brand": "Mtn",
+        "card_type": "",
+        "channel": "mobile_money",
+        "country_code": "GH",
+        "exp_month": "12",
+        "exp_year": "9999",
+        "last4": "X702",
+        "receiver_bank": null,
+        "receiver_bank_account_number": null,
+        "reusable": false,
+        "signature": null
+      },
+      "channel": "mobile_money",
+      "created_at": "2023-07-10T22:51:20.000Z",
+      "currency": "GHS",
+      "customer": {
+        "customer_code": "CUS_hy2temi60wd7w4t",
+        "email": "robertdoe60@gmail.com",
+        "first_name": null,
+        "id": 92628077,
+        "international_format_phone": null,
+        "last_name": null,
+        "metadata": null,
+        "phone": null,
+        "risk_action": "default"
+      },
+      "domain": "live",
+      "fees": 1,
+      "fees_breakdown": {
+        "amount": "1",
+        "formula": null,
+        "type": "paystack"
+      },
+      "fees_split": null,
+      "gateway_response": "Approved",
+      "id": 2942806404,
+      "ip_address": "154.160.20.43",
+      "log": null,
+      "message": "madePayment",
+      "metadata": {
+        "order_id": "20523595",
+        "origin_url": "https://friv.com"
+      },
+      "order_id": null,
+      "paidAt": "2023-07-10T22:52:07.000Z",
+      "paid_at": "2023-07-10T22:52:07.000Z",
+      "plan": {},
+      "pos_transaction_data": null,
+      "reference": "w9iup6pymk",
+      "requested_amount": 20,
+      "source": {
+        "entry_point": "transaction_initialize",
+        "identifier": null,
+        "source": "merchant_api",
+        "type": "api"
+      },
+      "split": {},
+      "status": "success",
+      "subaccount": {}
+    },
+    "event": "charge.success"
+  }
+}

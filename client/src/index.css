@@ -1,0 +1,38 @@
+
+ :root {
+  --font-family: 'Manrope', sans-serif;
+
+  --color-subtext: #FF8A71;
+
+  --dcolor-primary:#7380ec;
+  --dcolor-danger:#ff7782;
+  --dcolor-success:#41f1b6;
+  --dcolor-warning:#ffbb55;
+  --dcolor-white:#ffff;
+  --dcolor-info-light:#dce1eb;
+  --dcolor-info-dark:#7d8da1;
+  --dcolor-dark:#363949;
+  --dcolor-light:rgba(132,129,200,0.18);
+  --dcolor-primary-variant:#111e88;
+  --dcolor-dark-variant:#677483;
+  --dcolor-background:#f6f6f9;
+
+
+
+  --dcard-border-radius:2rem;
+  --dcard-border-radius-1:0.4rem;
+  --dcard-border-radius-2:0.8rem;
+  --dcard-border-radius-3:1.2rem;
+
+  --dcard-padding:1.8rem;
+  --dpadding-1:1.2rem;
+
+  --dbox-shadow:0 2rem 3rem var(--dcolor-light);
+
+
+  --color-text: #F5F5F5;
+  --color-inactive-text: #FFFFFF;
+  --grace-yellow:#FEF500;
+  --bg-yellow:#FEF500;
+
+}

@@ -1,0 +1,57 @@
+.verification-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.verification-content {
+    text-align: center;
+}
+
+.verification-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+}
+
+
+/* email-verification.css */
+.verification-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.status-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.verification-successful {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.verification-icon {
+    font-size: 48px;
+    margin-top: 10px;
+    display: block;
+}
+
+.login-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #1565c0;
+}
+
