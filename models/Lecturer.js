@@ -6,6 +6,7 @@ const Lecturer = db.define('Lecturer', {
     title: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue:'Dr.'
     },
     id: {
         type: DataTypes.STRING,
@@ -48,5 +49,7 @@ const Lecturer = db.define('Lecturer', {
         allowNull: false,
     },
 });
+
+Lecturer.sync().then(()=>console.log('Table Modified'))
 
 module.exports = Lecturer;

@@ -9,7 +9,7 @@ import InternDetailVerificationPage from "./auth-pages/intern/InternDetailVerifi
 import ActivateAccountPage from "./auth-pages/intern/ActivateAccountPage";
 import InternDashboard from "./auth-pages/intern/InternDashboard";
 import SupervisorDashboard from "./auth-pages/supervisor/SupervisorDashboard";
-import Dashboard from "./auth-pages/coordinator/Dashboard";
+import ReferenceRequestDetailsPage from "./auth-pages/coordinator/ReferenceRequestDetailsPage";
 import ScholarshipListings from "./auth-pages/intern/ScholarshipListings";
 import AccommodationListings from "./auth-pages/intern/AccommodationListings";
 import InternshipListings from "./auth-pages/intern/InternshipListings";
@@ -54,7 +54,7 @@ function App() {
                     <Route path='/accommodation' exact element={<AccommodationListings/>}/>
                     <Route path='/scholarships' exact element={<ScholarshipListings/>}/>
 
-                    <Route path='/coordinator/dashboard' exact element={<Dashboard/>}/>
+                    <Route path='/coordinator/dashboard' exact element={<ReferenceRequestDetailsPage/>}/>
 
                     <Route path='/supervisor/dashboard' exact element={<SupervisorDashboard/>}/>
                     <Route path='/supervisor/account-activation' exact element={<ActivateSupervisorAccountPage/>}/>

@@ -90,6 +90,12 @@ tr.intern:hover{
     .main-body{
         width: 100%;
     }
+    .studentRequestDate{
+        display: none;
+    }
+    .paymentStatus{
+        display: none;
+    }
 
 }
 
@@ -99,6 +105,12 @@ tr.intern:hover{
     }
     .coordinator-main{
         grid-template-columns: 1fr;
+    }
+    .studentRequestDate{
+        display: none;
+    }
+    .paymentStatus{
+        display: none;
     }
 }
 
@@ -110,7 +122,12 @@ tr.intern:hover{
     .coordinator-main{
         grid-template-columns: 2fr 8fr;
     }
-
+    .studentRequestDate{
+        display: table-cell;
+    }
+    .paymentStatus{
+        display: table-cell;
+    }
 
 }
 

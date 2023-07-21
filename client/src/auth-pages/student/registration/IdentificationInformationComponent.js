@@ -17,12 +17,15 @@ function IdentificationInformationComponent({onPrevious, addStudentDetail, stude
             ...studentDetails, idType: idTypeRef.current.value,
             idNumber: idNumberRef.current.value
         }
+
+        localStorage.setItem('student',JSON.stringify(newDetails))
+
         axios.post('https://knustexpresso.codeden.org/api/students/', newDetails)
             .then(r =>{
                 if(r.data){
                     navigate('/student/dashboard')
                 }
-        }).catch(err=>alert("Error sav1ing Information"))
+        }).catch(err=>alert("Error saving Information"))
 
         console.log(newDetails)
     }

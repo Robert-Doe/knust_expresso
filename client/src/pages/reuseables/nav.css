@@ -1,0 +1,168 @@
+.nav-drop-option:hover{
+    cursor: pointer;
+    background-color: rgba(222,223,224,0.6);
+}
+
+.intern-nav-photo{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    border: 2px solid #001;
+}
+
+.profile-pic-menu{
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    padding:0.5em;
+}
+
+.header {
+    background-color: #F3F3F3;
+    display: flex;
+    align-items: baseline;
+    padding: .5rem;
+    gap: 1rem;
+}
+
+.link {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: #777;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.cdropdown .link{
+    color: black;
+    font-weight: bold;
+}
+
+.cdropdown.active > .link,
+.link:hover {
+    color: black;
+}
+
+.cdropdown {
+    position: relative;
+}
+
+.cdropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + .25rem);
+    background-color: white;
+    padding: .75rem;
+    z-index: 2;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.cdropdown.active > .link + .cdropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 2rem;
+}
+
+.cdropdown-links {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+
+nav.navbar{
+    background-image: url("background.svg");
+}
+
+
+
+
+.navbar-container {
+    position: relative;
+}
+
+.navbar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-toggle-icon,
+.close-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #333;
+    transition: transform 0.3s;
+}
+
+.navbar-toggle.active .navbar-toggle-icon {
+    transform: rotate(45deg);
+}
+
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #fdfdfd;
+    color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+    z-index: 100;
+}
+
+.sidenav.active {
+    transform: translateX(0%);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+    .navbar-toggle {
+        display: none;
+    }
+
+    .sidenav {
+        display: none;
+    }
+}

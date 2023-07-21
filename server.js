@@ -9,13 +9,18 @@ const lecturerRouter=require('./routes/lecturers')
 const studentRouter=require('./routes/students')
 const tellerRouter=require('./routes/teller')
 const departmentRouter=require('./routes/departments')
-const proficiencyRouter=require('./routes/proficiencyRequests')
+const proficiencyRequestRouter=require('./routes/proficiencyRequests')
+const internshipRequestRouter=require('./routes/internshipRequest')
+const referenceRequestRouter=require('./routes/referenceRequest')
+const proficiencyRouter=require('./routes/proficiency')
+
+
 /*const internshipRequestRouter=require('./routes/internshipRequest')
 const departmentAdminRouter=require('./routes/departmentAdministrators')
 const proficiencyAdminRouter=require('./routes/proficiencyOfficeAdministrators')
 const remittanceRouter=require('./routes/remittance')
 const requestRouter=require('./routes/request')*/
-const referenceRequestRouter=require('./routes/referenceRequest')
+
 
 
 
@@ -46,8 +51,11 @@ app.use('/api/lecturers',lecturerRouter);
 app.use('/api/students',studentRouter);
 app.use('/api/teller',tellerRouter);
 app.use('/api/departments',departmentRouter);
+app.use('/api/proficiency',proficiencyRouter)
 app.use('/api/reference-requests',referenceRequestRouter);
-app.use('/api/proficiency-requests',proficiencyRouter);
+app.use('/api/proficiency-requests',proficiencyRequestRouter);
+app.use('/api/internship-requests',internshipRequestRouter)
+
 
 
 /*app.get('/',(req,res)=>{
@@ -67,6 +75,7 @@ async function tryConnection() {
     try {
         await db.authenticate();
         console.log('Connection has been established successfully.');
+
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }

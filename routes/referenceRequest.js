@@ -1,8 +1,8 @@
 // routes/referenceRequest.js
-
 const express = require('express');
 const router = express.Router();
 const ReferenceRequest = require('../models/ReferenceRequest');
+const Request = require('../models/Request');
 const multer = require('multer'); // Middleware for handling file uploads
 const fs = require('fs');
 const path = require('path');
@@ -17,14 +17,25 @@ if (!fs.existsSync(uploadDirectory)) {
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, uploadDirectory);
-    },
-    filename: (req, file, cb) => {
+    }, filename: (req, file, cb) => {
         // Generate a unique filename
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
         const ext = path.extname(file.originalname);
         cb(null, file.fieldname + '-' + uniqueSuffix + ext);
     },
 });
+
+router.get('/lecturer-reference/:lecturerId', async (req, res) => {
+
+    const lecturerId = req.params.lecturerId
+
+    // Find all reference requests associated with the lecturer's ID
+    const referenceRequests = await ReferenceRequest.findAll({
+        where: {lecturerId: lecturerId},
+    })
+    res.json(referenceRequests)
+})
+
 
 const upload = multer({storage});
 
@@ -33,13 +44,7 @@ router.post('/', upload.fields([{name: 'cvFile'}, {name: 'transcriptFile'}]), as
     try {
         // Extract form data from request body
         const {
-            studentId,
-            departmentId,
-            lecturerId,
-            schoolName,
-            schoolAddress,
-            comments,
-            schoolEmail,
+            studentId, departmentId, lecturerId, schoolName, schoolAddress, purpose, schoolEmail,
         } = req.body;
 
         const transcriptUrl = req.files['transcriptFile'][0] ? `https://knustexpresso.codeden.org/${uploadDirectory}${req.files['transcriptFile'][0].filename}` : ''
@@ -52,16 +57,27 @@ router.post('/', upload.fields([{name: 'cvFile'}, {name: 'transcriptFile'}]), as
             lecturerId,
             schoolName,
             schoolAddress,
-            comments,
+            purpose,
             schoolEmail,
             transcriptUrl,
             resumeUrl
-
         });
 
         // Save the referenceRequest to the database
-        await referenceRequest.save();
-        res.status(200).json({message: 'Form submitted successfully!'});
+        const request = await referenceRequest.save();
+        const dummyRequest = {
+            id:request.id,
+            requestType: 'REFERENCE',
+            requestId: request.id,
+            date: new Date().toLocaleDateString('en-GB'),
+            paymentStatus: 'NOT-PAID',
+            status: 'PENDING',
+            studentId: studentId,
+        };
+
+        const createdRequest = await Request.create(dummyRequest);
+
+        res.status(200).json({message: 'Form submitted successfully!', createdRequest});
     } catch (error) {
         console.error('Error submitting form:', error);
         res.status(500).json({message: 'Form submission failed!'});
@@ -123,69 +139,6 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-/*
-
-// GET request to retrieve all reference requests
-router.get('/', async (req, res) => {
-    try {
-        // Fetch all reference requests from the database
-        const referenceRequests = await ReferenceRequest.findAll();
-
-        res.status(200).json(referenceRequests);
-    } catch (error) {
-        console.error('Error retrieving reference requests:', error);
-        res.status(500).json({ message: 'Failed to retrieve reference requests!' });
-    }
-});
-
-// GET request to retrieve a single reference request by ID
-router.get('/:id', async (req, res) => {
-    try {
-        const referenceRequest = await ReferenceRequest.findByPk(req.params.id);
-
-        if (!referenceRequest) {
-            return res.status(404).json({ message: 'Reference request not found!' });
-        }
-
-        res.status(200).json(referenceRequest);
-    } catch (error) {
-        console.error('Error retrieving reference request:', error);
-        res.status(500).json({ message: 'Failed to retrieve reference request!' });
-    }
-});
-
-// PUT request to update a reference request by ID
-router.put('/:id', async (req, res) => {
-    try {
-        const referenceRequest = await ReferenceRequest.findByIdAndUpdate(req.params.id, req.body, { new: true });
-
-        if (!referenceRequest) {
-            return res.status(404).json({ message: 'Reference request not found!' });
-        }
-
-        res.status(200).json({ message: 'Reference request updated successfully!' });
-    } catch (error) {
-        console.error('Error updating reference request:', error);
-        res.status(500).json({ message: 'Failed to update reference request!' });
-    }
-});
-
-// DELETE request to delete a reference request by ID
-router.delete('/:id', async (req, res) => {
-    try {
-        const referenceRequest = await ReferenceRequest.findByIdAndDelete(req.params.id);
-
-        if (!referenceRequest) {
-            return res.status(404).json({ message: 'Reference request not found!' });
-        }
-
-        res.status(200).json({ message: 'Reference request deleted successfully!' });
-    } catch (error) {
-        console.error('Error deleting reference request:', error);
-        res.status(500).json({ message: 'Failed to delete reference request!' });
-    }
-});
-*/
-
 module.exports = router;
+
 

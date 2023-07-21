@@ -1,13 +1,14 @@
 // models/ReferenceRequest.js
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
+const { v4: uuidv4 } = require('uuid');
 
 const ReferenceRequest = db.define('ReferenceRequest', {
-    id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-    },
+        id: {
+            type: DataTypes.UUID, // Use UUID data type
+            defaultValue: () => uuidv4(), // Set a default value to generate UUID on creation
+            primaryKey: true,
+        },
     studentId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -28,7 +29,7 @@ const ReferenceRequest = db.define('ReferenceRequest', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    comments: {
+    purpose: {
         type: DataTypes.TEXT,
         allowNull: true,
     },

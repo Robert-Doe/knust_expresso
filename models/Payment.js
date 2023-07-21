@@ -9,7 +9,7 @@ const Payment = db.define('Payment', {
         autoIncrement: true,
     },
     requestId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         allowNull: false,
     },
     amount: {

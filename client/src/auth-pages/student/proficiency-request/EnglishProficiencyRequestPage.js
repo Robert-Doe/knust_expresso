@@ -4,6 +4,7 @@ import DashboardNav from '../../../components/navbar/DashboardNav';
 const EnglishProficiencyRequestPage = () => {
     const transcriptRef = useRef(null);
     const referenceNumberRef = useRef(null);
+    const [orderId,setOrderId]=useState('')
     const [isRequestSuccessful, setIsRequestSuccessful] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -23,9 +24,12 @@ const EnglishProficiencyRequestPage = () => {
                 method: 'POST',
                 body: formData,
             })
-            console.log(response.data)
+            const responseData = await response.json();
+            console.log(responseData);
             if (response.ok) {
                 setIsRequestSuccessful(true);
+                setOrderId(responseData.createdRequest.id)
+                console.log(responseData)
             } else {
                 setIsRequestSuccessful(false);
             }
@@ -35,10 +39,42 @@ const EnglishProficiencyRequestPage = () => {
         }
     };
 
+    const handlePayment = async () => {
+        const paymentData = {
+            amount: 20,
+            email: "robertdoe009@gmail.com",
+            callbackUrl: "https://knustexpresso.codeden.org/api/teller/callback",
+            orderId: orderId,
+            originUrl: "https://knustexpresso.codeden.org",
+            studentId: "20523595"
+        };
+        try {
+            const response = await fetch("https://knustexpresso.codeden.org/api/teller/create-payment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(paymentData)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                window.location.href=responseData.paymentUrl
+                console.log("Payment created successfully:", responseData);
+                // Perform further actions with the payment response data
+            } else {
+                console.error("Failed to create payment");
+            }
+        } catch (error) {
+            console.error("Error creating payment:", error);
+        }
+    };
+
     return (
         <section>
             <DashboardNav />
             <div className="container mt-5">
+                <h5 className="py-2 font-weight-bold">Request an English Proficiency letter</h5>
                 <form>
                     <div className="row">
                         <div className="col-md-6">
@@ -81,6 +117,7 @@ const EnglishProficiencyRequestPage = () => {
                                     type="button"
                                     className="btn btn-success ml-2"
                                     disabled={!isRequestSuccessful}
+                                    onClick={handlePayment}
                                 >
                                     Pay
                                 </button>

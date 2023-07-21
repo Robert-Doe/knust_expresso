@@ -2,8 +2,8 @@
   "name": "client",
   "version": "0.1.0",
   "homepage": "https://knustexpress.codeden.org",
-  "proxy": 65124,
   "private": true,
+  "proxy": 65124,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

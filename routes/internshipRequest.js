@@ -1,8 +1,8 @@
 // routes/internshipRequest.js
-
 const express = require('express');
 const router = express.Router();
 const InternshipRequest = require('../models/InternshipRequest');
+const Request = require('../models/Request');
 
 // Get all internship requests
 router.get('/', async (req, res) => {
@@ -18,7 +18,24 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const internshipRequest = await InternshipRequest.create(req.body);
-        res.status(201).json(internshipRequest);
+       // console.log(internshipRequest)
+
+        const dummyRequest = {
+            id:internshipRequest.id,
+            requestType: 'INTERNSHIP',
+            requestId: internshipRequest.id,
+            date: new Date().toLocaleDateString('en-GB'),
+            paymentStatus: 'PAID',
+            status: 'PENDING',
+            studentId: internshipRequest.studentId,
+        };
+
+        const createdRequest = await Request.create(dummyRequest);
+
+        console.log(createdRequest)
+
+        res.status(200).json({message: 'Form submitted successfully!', createdRequest});
+
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

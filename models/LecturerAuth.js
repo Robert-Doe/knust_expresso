@@ -1,14 +1,15 @@
-// models/LecturerAuth.js
+// models/DepartmentAdministratorAuth.js
+
 const { DataTypes } = require('sequelize');
 const db = require('../config/db');
 
 const LecturerAuth = db.define('LecturerAuth', {
-    lecturerId: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
+    staffId: {
+        type: DataTypes.STRING,
         allowNull: false,
+        primaryKey:true,
     },
-    keyHash: {
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
     },

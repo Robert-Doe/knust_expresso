@@ -3,7 +3,17 @@
 const express = require('express');
 const router = express.Router();
 const Department = require('../models/Department');
+const DepartmentAuth = require('../models/DepartmentAuth');
 const Lecturer = require('../models/Lecturer');
+const jwt = require("jsonwebtoken");
+const secretKey = process.env.DEPARTMENT_ACCESS_TOKEN_SECRET;
+
+function generateToken(department) {
+    const payload = {id: department.id, role: 'department'};
+    const options = {expiresIn: '300d'};
+    return jwt.sign(payload, secretKey, options);
+}
+
 
 // Get all departments
 router.get('/', async (req, res) => {
@@ -14,6 +24,32 @@ router.get('/', async (req, res) => {
         res.status(500).json({ message: 'Error retrieving departments' });
     }
 });
+
+router.post('/department-auths',async (req, res) => {
+
+    console.log(req.body.auths)
+    const posts = await DepartmentAuth.bulkCreate(req.body.auths)
+    res.json(posts)
+})
+
+router.post('/login',async (req,res)=>{
+    const {passKey,id}=req.body
+    const departmentAuth=await DepartmentAuth.findByPk(id)
+
+    if(!departmentAuth){
+        res.json({msg:"Account does not exist"})
+    }else{
+        if(passKey===departmentAuth.password){
+            const token=generateToken({id:departmentAuth.departmentId})
+            res.json({msg:"Login Successful", token})
+        }else{
+            res.json({msg:"Login failed: Password Incorrect"})
+        }
+    }
+
+
+})
+
 
 router.post('/bulk-insert', async (req, res) => {
     const departmentData = req.body;

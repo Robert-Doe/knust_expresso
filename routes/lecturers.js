@@ -3,41 +3,25 @@
 const express = require('express');
 const router = express.Router();
 const Lecturer = require('../models/Lecturer');
+const LecturerAuth = require('../models/LecturerAuth');
+const jwt = require("jsonwebtoken");
+const DepartmentAuth = require("../models/DepartmentAuth");
 
+
+
+const secretKey = process.env.DEPARTMENT_ACCESS_TOKEN_SECRET;
+
+function generateToken(lecturer) {
+    const payload = {id: lecturer.id, role: 'lecturer'};
+    const options = {expiresIn: '300d'};
+    return jwt.sign(payload, secretKey, options);
+}
 
 // Define the route for pushing JSON data to the database
 router.get('/push', async (req, res) => {
     try {
         const lecturers = require('../config/lecturers');
 
-        // Loop through the lecturers array and create records in the database
-       /* for (const lecturerData of lecturers) {
-            // Extract the properties from the JSON object
-            const {
-                firstName,
-                lastName,
-                gender,
-                email,
-                phoneNumber,
-                departmentId,
-                position,
-                profileLink,
-                imageSrc
-            } = lecturerData;
-
-            // Create a lecturer record in the database
-            await Lecturer.create({
-                firstName,
-                lastName,
-                gender,
-                email,
-                phoneNumber,
-                departmentId,
-                position,
-                profileLink,
-                imageSrc
-            });
-        }*/
         await Lecturer.bulkCreate(lecturers)
 
         res.send('Data successfully pushed to the database.');
@@ -48,6 +32,30 @@ router.get('/push', async (req, res) => {
 });
 
 
+router.post('/lecturer-auths',async (req, res) => {
+
+    const lecturerAuths = await LecturerAuth.bulkCreate(req.body.auths)
+    res.json(lecturerAuths)
+
+})
+
+
+router.post('/login',async (req,res)=>{
+    const {passKey,staffId}=req.body
+    const lecturerAuth=await LecturerAuth.findByPk(staffId)
+
+    if(!lecturerAuth){
+        res.json({msg:"Account does not exist"})
+    }else{
+        if(passKey===lecturerAuth.password){
+            const token=generateToken({id:lecturerAuth.staffId})
+            res.json({msg:"Login Successful", token})
+        }else{
+            res.json({msg:"Login failed: Password Incorrect"})
+        }
+    }
+
+})
 
 
 // Get all lecturers

@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 const ProficiencyRequest = require('../models/ProficiencyRequest');
+const Request = require('../models/Request');
 
 const uploadDirectory = 'uploads/proficiency';
 
@@ -68,9 +69,23 @@ router.post('/', upload.single('transcript'), async (req, res) => {
         });
 
         // Save the proficiencyRequest to the database
-        await proficiencyRequest.save();
+     const request=   await proficiencyRequest.save();
 
-        res.status(200).json({ message: 'Transcript uploaded successfully!' });
+
+        const dummyRequest = {
+            id:request.id,
+            requestType: 'PROFICIENCY',
+            requestId: request.id,
+            date: new Date().toLocaleDateString('en-GB'),
+            paymentStatus: 'NOT-PAID',
+            status: 'PENDING',
+            studentId: studentId,
+        };
+
+        const createdRequest = await Request.create(dummyRequest);
+
+        res.status(200).json({message: 'Form submitted successfully!', createdRequest});
+
     } catch (error) {
         console.error('Error uploading transcript:', error);
         res.status(500).json({ message: 'Transcript upload failed!' });

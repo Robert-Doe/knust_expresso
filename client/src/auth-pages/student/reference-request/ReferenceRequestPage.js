@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import DashboardNav from "../../../components/navbar/DashboardNav";
 
 const ReferenceRequestPage = () => {
@@ -7,11 +7,12 @@ const ReferenceRequestPage = () => {
     const [lecturers, setLecturers] = useState([]);
     const [selectedLecturer, setSelectedLecturer] = useState('');
     const [isRequestSuccessful, setIsRequestSuccessful] = useState(false);
+    const [orderId, setOrderId] = useState('')
 
     const studentIdRef = useRef(null);
     const schoolNameRef = useRef(null);
     const schoolAddressRef = useRef(null);
-    const commentsRef = useRef(null);
+    const purposeRef = useRef(null);
     const transcriptFileRef = useRef(null);
     const cvFileRef = useRef(null);
     const schoolEmailRef = useRef(null);
@@ -48,7 +49,7 @@ const ReferenceRequestPage = () => {
             lecturerId: selectedLecturer,
             schoolName: schoolNameRef.current.value,
             schoolAddress: schoolAddressRef.current.value,
-            comments: commentsRef.current.value,
+            purpose: purposeRef.current.value,
             transcriptFile: transcriptFileRef.current.files[0],
             cvFile: cvFileRef.current.files[0],
             schoolEmail: schoolEmailRef.current.value,
@@ -66,8 +67,13 @@ const ReferenceRequestPage = () => {
                 body: formData,
             });
 
+            const responseData = await response.json();
+            console.log(responseData);
+
             if (response.ok) {
                 setIsRequestSuccessful(true);
+                setOrderId(responseData.createdRequest.id)
+                console.log(responseData)
             } else {
                 setIsRequestSuccessful(false);
             }
@@ -77,10 +83,42 @@ const ReferenceRequestPage = () => {
         }
     };
 
+    const handlePayment = async () => {
+        const paymentData = {
+            amount: 20,
+            email: "robertdoe009@gmail.com",
+            callbackUrl: "https://knustexpresso.codeden.org/api/teller/callback",
+            orderId: orderId,
+            originUrl: "https://knustexpresso.codeden.org",
+            studentId: "20523595"
+        };
+        try {
+            const response = await fetch("https://knustexpresso.codeden.org/api/teller/create-payment", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(paymentData)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                window.location.href = responseData.paymentUrl
+                console.log("Payment created successfully:", responseData);
+                // Perform further actions with the payment response data
+            } else {
+                console.error("Failed to create payment");
+            }
+        } catch (error) {
+            console.error("Error creating payment:", error);
+        }
+    };
+
     return (
         <section>
             <DashboardNav/>
             <div className="container mt-5">
+                <h5 className="py-2 font-weight-bold">Request a recommendation letter</h5>
                 <form>
                     <div className="row">
                         <div className="col-md-6">
@@ -116,7 +154,7 @@ const ReferenceRequestPage = () => {
                                     <option value="">Select lecturer</option>
                                     {lecturers.map((lecturer) => (
                                         <option key={lecturer.id} value={lecturer.id}>
-                                            {`${lecturer.firstName} ${lecturer.lastName}`}
+                                            {`${lecturer.title} ${lecturer.firstName} ${lecturer.lastName}`}
                                         </option>
                                     ))}
                                 </select>
@@ -124,57 +162,67 @@ const ReferenceRequestPage = () => {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <div className="form-group">
                                 <label htmlFor="schoolName">School Name</label>
-                                <input type="text" id="schoolName" className="form-control" ref={schoolNameRef} required />
+                                <input type="text" id="schoolName" className="form-control" ref={schoolNameRef}
+                                       required/>
                             </div>
                         </div>
-                        <div className="col-md-6">
+                        <div className="col-md-4">
                             <div className="form-group">
                                 <label htmlFor="schoolAddress">School Address</label>
-                                <input type="text" id="schoolAddress" className="form-control" ref={schoolAddressRef} required />
+                                <input type="text" id="schoolAddress" className="form-control" ref={schoolAddressRef}
+                                       required/>
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12">
+                        <div className="col-md-4">
                             <div className="form-group">
-                                <label htmlFor="comments">Comments</label>
-                                <textarea id="comments" className="form-control" ref={commentsRef}></textarea>
+                                <label htmlFor="schoolAddress">Purpose</label>
+                                <select className={'form-control'} ref={purposeRef} name="purposeOfReference" required>
+                                    <option value="" disabled selected>Select Purpose of Reference</option>
+                                    <option value="Scholarship">Scholarship</option>
+                                    <option value="Employment">Employment</option>
+                                    <option value="Academic">Academic</option>
+                                </select>
                             </div>
                         </div>
                     </div>
+
                     <div className="row">
                         <div className="col-md-3">
                             <div className="form-group">
                                 <label htmlFor="cvFile">CV File</label>
-                                <input type="file" id="cvFile" className="form-control" ref={cvFileRef} />
+                                <input type="file" id="cvFile" className="form-control" ref={cvFileRef}/>
                             </div>
                         </div>
                         <div className="col-md-3">
                             <div className="form-group">
                                 <label htmlFor="transcriptFile">Transcript File</label>
-                                <input type="file" id="transcriptFile" className="form-control" ref={transcriptFileRef} />
+                                <input type="file" id="transcriptFile" className="form-control"
+                                       ref={transcriptFileRef}/>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
                                 <label htmlFor="schoolEmail">School Email</label>
-                                <input type="email" id="schoolEmail" className="form-control" ref={schoolEmailRef} required />
+                                <input type="email" id="schoolEmail" className="form-control" ref={schoolEmailRef}
+                                       required/>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            {!isRequestSuccessful && <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-                                Submit
-                            </button>}
+                            {!isRequestSuccessful &&
+                                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+                                    Submit
+                                </button>}
                             {isRequestSuccessful && (
                                 <button
                                     type="button"
                                     className="btn btn-success ml-2"
                                     disabled={!isRequestSuccessful}
+                                    onClick={handlePayment}
                                 >
                                     Pay
                                 </button>

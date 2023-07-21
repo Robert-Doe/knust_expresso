@@ -8,8 +8,14 @@ import InternshipRequestPage from "./auth-pages/student/internship-request/Inter
 import ReferenceRequestPage from "./auth-pages/student/reference-request/ReferenceRequestPage";
 import SignUpPage from "./auth-pages/student/signUp/SignUpPage";
 import SignInPage from "./auth-pages/student/signIn/SignInPage";
-import Dashboard from "./auth-pages/student/dashboard/Dashboard";
+import LecturerSignInPage from "./auth-pages/lecturer/signIn/lecturerSigninPage";
+import ProficiencySignInPage from "./auth-pages/proficiency/signIn/proficiencySigninPage";
+import DepartmentSignInPage from "./auth-pages/department/signIn/departmentSignInPage";
+import StudentDashboard from "./auth-pages/student/dashboard/StudentDashboard";
+import LecturerDashboard from "./auth-pages/lecturer/dashboard/LecturerDashboard";
 import EnglishProficiencyRequestPage from "./auth-pages/student/proficiency-request/EnglishProficiencyRequestPage";
+import LoginGridPage from "./pages/LoginGridPage";
+import ReferenceRequestDetailsPage from "./auth-pages/lecturer/details/ReferenceRequestDetailsPage";
 
 const App = () => {
     return (
@@ -19,11 +25,17 @@ const App = () => {
                 <Route path='/student/account-registration' exact element={<StudentRegistrationPage/>}/>
                 <Route path='/verification/:token' exact element={<EmailVerificationPage/>}/>
                 <Route path='/internship-request' exact element={<InternshipRequestPage/>}/>
-                <Route path='/reference-request' exact element={<ReferenceRequestPage/>}/>
-                <Route path='/proficiency-request' exact element={<EnglishProficiencyRequestPage/>}/>
+                <Route path='student/reference-request' exact element={<ReferenceRequestPage/>}/>
+                <Route path='student/proficiency-request' exact element={<EnglishProficiencyRequestPage/>}/>
+                <Route path='/signin/' exact element={<LoginGridPage/>}/>
                 <Route path='/signup/student/' exact element={<SignUpPage/>}/>
                 <Route path='/signin/student/' exact element={<SignInPage/>}/>
-                <Route path='/student/dashboard/' exact element={<Dashboard/>}/>
+                <Route path='/signin/lecturer/' exact element={<LecturerSignInPage/>}/>
+                <Route path='/signin/proficiency/' exact element={<ProficiencySignInPage/>}/>
+                <Route path='/signin/department/' exact element={<DepartmentSignInPage/>}/>
+                <Route path='/student/dashboard/' exact element={<StudentDashboard/>}/>
+                <Route path='/lecturer/dashboard/' exact element={<LecturerDashboard/>}/>
+                <Route path='/lecturer/reference-requests/:requestId' exact element={<ReferenceRequestDetailsPage/>}/>
             </Routes>
         </Router>
     )

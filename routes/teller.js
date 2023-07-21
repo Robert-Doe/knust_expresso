@@ -7,6 +7,7 @@ const Student = require('../models/Student');
 const StudentAuth = require('../models/StudentAuth')
 const {v4: uuidv4} = require('uuid');
 const nodemailer = require('nodemailer');
+const Payment=require("../models/Payment")
 const PAYSTACK_SECRET_KEY = 'sk_live_20a17270c56f71eeb3b8dced173f3c31dc49accd';
 
 const winston = require('winston');
@@ -24,7 +25,7 @@ const logger = winston.createLogger({
 
 // Endpoint for creating a payment request
 router.post('/create-payment', async (req, res) => {
-    const { amount, email, callbackUrl,orderId,originUrl } = req.body;
+    const { amount, email, callbackUrl,orderId,originUrl,studentId } = req.body;
     logger.info(req.body)
 
     try {
@@ -36,7 +37,8 @@ router.post('/create-payment', async (req, res) => {
                 callback_url: callbackUrl,
                 metadata: {
                     order_id: orderId, // Include the order ID in the metadata
-                    origin_url:originUrl
+                    origin_url:originUrl,
+                    student_id:studentId
                 }
             },
             {
@@ -63,16 +65,23 @@ router.post('/callback', async (req, res) => {
     logger.info(req.body)
     logger.info("FROM POST")
     const transactionDetails = req.body; // Retrieve the callback data from the request body
-    const originUrl = transactionDetails.message.data.metadata.origin_url;
+    //const originUrl = transactionDetails.message.data.metadata.originUrl;
+    logger.info(transactionDetails.data.metadata);
+    const amount=transactionDetails.data.amount;
+    const {order_id,student_id}=transactionDetails.data.metadata;
+    logger.info(transactionDetails.data.metadata)
+    console.log(transactionDetails.data.metadata)
     //res.redirect(originUrl)
     //res.json(req.body)
+    const paymentRecord= await Payment.create({requestId:order_id,studentId:student_id,amount,date:new Date().toString()})
+
     res.send("Received POST REQUEST");
 });
 
 // Endpoint for creating a payment request
 router.get('/callback', async (req, res) => {
-     console.log(req.body)
-     console.log(req)
+    console.log(req.body)
+    console.log(req)
     logger.info("FROM GET")
     res.send("Received GET REQUEST");
 });
