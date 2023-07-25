@@ -47,8 +47,8 @@ router.post('/', upload.fields([{name: 'cvFile'}, {name: 'transcriptFile'}]), as
             studentId, departmentId, lecturerId, schoolName, schoolAddress, purpose, schoolEmail,
         } = req.body;
 
-        const transcriptUrl = req.files['transcriptFile'][0] ? `https://knustexpresso.codeden.org/${uploadDirectory}${req.files['transcriptFile'][0].filename}` : ''
-        const resumeUrl = req.files['transcriptFile'][0] ? `https://knustexpresso.codeden.org/${uploadDirectory}${req.files['cvFile'][0].filename}` : ''
+        const transcriptUrl = req.files['transcriptFile'][0] ? `https://knustexpresso.codeden.org/${uploadDirectory}/${req.files['transcriptFile'][0].filename}` : ''
+        const resumeUrl = req.files['transcriptFile'][0] ? `https://knustexpresso.codeden.org/${uploadDirectory}/${req.files['cvFile'][0].filename}` : ''
 
         // Create a new ReferenceRequest object with the extracted form data
         const referenceRequest = new ReferenceRequest({

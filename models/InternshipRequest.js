@@ -19,7 +19,7 @@ const InternshipRequest = db.define('InternshipRequest', {
         allowNull: false,
     },
     studentId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     pointOfContact: {
@@ -33,8 +33,12 @@ const InternshipRequest = db.define('InternshipRequest', {
             isEmail: true,
         },
     },
+    departmentId: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     startDate: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     duration: {

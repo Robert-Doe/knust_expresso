@@ -13,6 +13,8 @@ const proficiencyRequestRouter=require('./routes/proficiencyRequests')
 const internshipRequestRouter=require('./routes/internshipRequest')
 const referenceRequestRouter=require('./routes/referenceRequest')
 const proficiencyRouter=require('./routes/proficiency')
+const submissionsRouter=require('./routes/submissions')
+const requestRouter=require('./routes/request')
 
 
 /*const internshipRequestRouter=require('./routes/internshipRequest')
@@ -55,6 +57,8 @@ app.use('/api/proficiency',proficiencyRouter)
 app.use('/api/reference-requests',referenceRequestRouter);
 app.use('/api/proficiency-requests',proficiencyRequestRouter);
 app.use('/api/internship-requests',internshipRequestRouter)
+app.use('/api/requests',requestRouter)
+app.use('/api/submissions',submissionsRouter)
 
 
 

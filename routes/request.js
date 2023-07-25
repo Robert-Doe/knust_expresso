@@ -47,6 +47,7 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const request = await Request.findByPk(req.params.id);
+        console.log("Attempting to update status")
         if (request) {
             await request.update(req.body);
             res.json(request);

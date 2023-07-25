@@ -1,6 +1,6 @@
 import React from 'react';
 import DashboardSideNav from "../DashboardSideNav";
-import CoordinatorNav from "../../../pages/reusables/CoordinatorNav";
+import CoordinatorNav from "../../../pages/reusables/StudentNav";
 import style from './CoordinatorAccommodation.module.css'
 import {MdAssignmentTurnedIn, MdViewList} from "react-icons/md";
 import {BiUserPlus} from "react-icons/bi"

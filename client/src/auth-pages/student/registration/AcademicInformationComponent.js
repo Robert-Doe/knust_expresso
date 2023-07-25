@@ -114,7 +114,7 @@ function AcademicInformationComponent({onPrevious,onNext,addStudentDetail,studen
                                 <select id="programme" ref={programmeRef} className="form-control">
                                     <option value="">Select an option</option>
                                     {programmes.map((programme, index) => (
-                                        <option key={index} value={programme.name}>
+                                        <option key={index} value={programme.id}>
                                             {programme.name}
                                         </option>
                                     ))}

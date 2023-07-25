@@ -4,7 +4,6 @@ import DashboardNav from "../../../components/navbar/DashboardNav";
 const InternshipRequestForm = () => {
     const companyNameRef = useRef(null);
     const addressRef = useRef(null);
-    const studentIdRef = useRef(null);
     const pointOfContactRef = useRef(null);
     const emailRef = useRef(null);
     const startDateRef = useRef(null);
@@ -14,14 +13,18 @@ const InternshipRequestForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const student= JSON.parse(localStorage.getItem("student"))
+        console.log("Logging Parsed Student : \n", student)
+
         const requestData = {
             companyName: companyNameRef.current.value,
             address: addressRef.current.value,
-            studentId: 20523595,
+            studentId: student.studentId,
             pointOfContact: pointOfContactRef.current.value,
             email: emailRef.current.value,
             startDate: startDateRef.current.value,
             duration: durationRef.current.value,
+            departmentId:student.departmentId
         };
 
 
