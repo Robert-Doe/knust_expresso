@@ -28,6 +28,8 @@ function LecturerSigninPage(props) {
                    console.log(response.data);
                     if(response.data.token){
                         localStorage.setItem('accessToken',response.data.token)
+                        localStorage.setItem('lecturer',response.data.lecturer)
+                        navigate('/lecturer/dashboard')
                     }else{
                         alert(response.data.msg)
                     }

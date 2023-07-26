@@ -1,5 +1,4 @@
 import DashboardNav from "../../../components/navbar/DashboardNav";
-import './dashboard.css'
 import {BiBulb} from "react-icons/bi";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 import DashboardSideNav from "./DashboardSideNav";

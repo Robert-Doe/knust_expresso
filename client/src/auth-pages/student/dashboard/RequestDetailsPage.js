@@ -6,9 +6,53 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { FiDownload } from "react-icons/fi";
 import StudentNav from "../../../components/navbar/StudentNav";
 import "./dashboard.css";
-
 import { BsFileText } from "react-icons/bs";
+import { FaCalendarAlt, FaClock } from "react-icons/fa";
 
+const ProficiencyRequestDetails = ({ additionalInfo }) => {
+    return (
+        <div>
+            <h4>English Proficiency Request Details</h4>
+            <div className="details-container">
+                <div className="detail-item">
+                    <AiOutlineMail className="detail-icon" />
+                    <p><strong>Student ID:</strong> {additionalInfo.studentId}</p>
+                </div>
+                <div className="detail-item">
+                    <AiOutlineFileText className="detail-icon" />
+                    <p><strong>Transcript URL:</strong> <a href={additionalInfo.transcriptUrl} className="btn btn-warning" download>Download Transcript <FiDownload /></a></p>
+                </div>
+                {/* Add more detail items as needed */}
+            </div>
+        </div>
+    );
+};
+const InternshipRequestDetails = ({ additionalInfo }) => {
+    return (
+        <div>
+            <h4>Internship Request Details</h4>
+            <div className="details-container">
+                <div className="detail-item">
+                    <AiOutlineMail className="detail-icon" />
+                    <p><strong>Email:</strong> {additionalInfo.email}</p>
+                </div>
+                <div className="detail-item">
+                    <AiOutlineBank className="detail-icon" />
+                    <p><strong>Company Name:</strong> {additionalInfo.companyName}</p>
+                </div>
+                <div className="detail-item">
+                    <FaCalendarAlt className="detail-icon" />
+                    <p><strong>Start Date:</strong> {additionalInfo.startDate}</p>
+                </div>
+                <div className="detail-item">
+                    <FaClock className="detail-icon" />
+                    <p><strong>Duration:</strong> {additionalInfo.duration} weeks</p>
+                </div>
+                {/* Add more detail items as needed */}
+            </div>
+        </div>
+    );
+};
 const ReferenceRequestDetails = ({ additionalInfo }) => {
     return (
         <div>
@@ -31,7 +75,6 @@ const ReferenceRequestDetails = ({ additionalInfo }) => {
         </div>
     );
 };
-
 
 
 
@@ -116,8 +159,7 @@ function RequestDetailsPage() {
                         <div className="container">
                             {request.requestType === "PROFICIENCY" && (
                                 <div>
-                                    <h3>English Proficiency Request Details</h3>
-                                    {/* Render English Proficiency details using additionalInfo */}
+                                    <ProficiencyRequestDetails additionalInfo={additionalInfo}/>
                                 </div>
                             )}
                             {request.requestType === "REFERENCE" && (
@@ -128,8 +170,7 @@ function RequestDetailsPage() {
                             )}
                             {request.requestType === "INTERNSHIP" && (
                                 <div>
-                                    <h3>Internship Letter Request Details</h3>
-                                    {/* Render Internship Letter details using additionalInfo */}
+                                    <InternshipRequestDetails additionalInfo={additionalInfo}/>
                                 </div>
                             )}
                         </div>

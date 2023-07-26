@@ -31,7 +31,7 @@ function AcademicInformationComponent({onPrevious,onNext,addStudentDetail,studen
         indexNoRef.current.value = studentDetails.indexNumber ?? '';
         gradTypeRef.current.value = studentDetails.gradType ?? '';
         admissionYearRef.current.value = studentDetails.admissionYear ?? '';
-        programmeRef.current.value = studentDetails.programme ?? '';
+        programmeRef.current.value = studentDetails.departmentId ?? '';
         graduationYearRef.current.value = studentDetails.graduationYear ?? '';
     }, []);
 
@@ -43,12 +43,10 @@ function AcademicInformationComponent({onPrevious,onNext,addStudentDetail,studen
             indexNumber: indexNoRef.current.value,
             gradType: gradTypeRef.current.value,
             admissionYear: admissionYearRef.current.value,
-            programme: programmeRef.current.value,
+            departmentId: programmeRef.current.value,
             graduationYear: graduationYearRef.current.value,
         })
-
         onNext()
-
     }
 
     function generateYearOptions(startYear, endYear) {

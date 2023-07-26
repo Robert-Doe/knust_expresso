@@ -116,7 +116,7 @@ const Student = db.define('Student', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    programme: {
+    departmentId: {
         type: DataTypes.STRING,
         allowNull: false
     },

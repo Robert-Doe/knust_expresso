@@ -5,23 +5,23 @@ import logo from "../../../assets/logo.png";
 import axios from "axios";
 
 function ProficiencySigninPage(props) {
-    const departmentIdRef=useRef(null)
+    const proficiencyIdRef=useRef(null)
     const passKeyRef=useRef(null)
     const navigate=useNavigate()
     const signUpHandler=(e)=>{
         console.log("Using CodeDen")
         e.preventDefault()
         // if(passKeyRef.current.value===confirmPassKeyRef.current.value){
-        const departmentId=departmentIdRef.current.value;
+        const departmentId=proficiencyIdRef.current.value;
         const passKey=passKeyRef.current.value;
 
             console.log({
-                email:departmentIdRef.current.value,
+                proficiencyId:proficiencyIdRef.current.value,
                 passkey:passKeyRef.current.value
             })
 
             axios.post('http://localhost:65124/api/proficiency/login', {
-                departmentId:departmentIdRef.current.value,
+                proficiencyId:proficiencyIdRef.current.value,
                 passKey:passKeyRef.current.value
             })
                 .then(response => {
@@ -55,7 +55,7 @@ function ProficiencySigninPage(props) {
 
                     <div>
                         <label className={style.label} htmlFor="Username">Email or Username</label>
-                        <input className="" id="Username" ref={departmentIdRef} name="Username" type="text"/>
+                        <input className="" id="Username" ref={proficiencyIdRef} name="Username" type="text"/>
                     </div>
                     <div>
                         <label className={style.label} htmlFor="Password">Password</label>

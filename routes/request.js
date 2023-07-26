@@ -8,6 +8,29 @@ const ReferenceRequest = require('../models/ReferenceRequest');
 
 
 
+router.get("/student/:studentId", async (req, res) => {
+    try {
+        const { studentId } = req.params;
+
+        // If studentId is not provided, return an empty array
+        if (!studentId) {
+            return res.json([]);
+        }
+
+        // If studentId is provided, filter requests based on the studentId
+        const requests = await Request.findAll({
+            where: {
+                studentId: studentId,
+            },
+        });
+
+        res.json(requests);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
 
 // Get all requests
 router.get('/', async (req, res) => {

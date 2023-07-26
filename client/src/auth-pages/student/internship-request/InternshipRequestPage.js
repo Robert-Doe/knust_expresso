@@ -49,8 +49,9 @@ const InternshipRequestForm = () => {
                 emailRef.current.value = '';
                 startDateRef.current.value = '';
                 durationRef.current.value = '';*/
-                setOrderId(requestData.createdRequest.id)
-                console.log(requestData);
+
+               setOrderId(responseData.createdRequest.id)
+                //console.log(requestData.createdRequest.id);
                 setIsRequestSubmitted(true);
             } else {
                 console.log('Failed to submit internship request');

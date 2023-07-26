@@ -27,6 +27,7 @@ function SignUpPage(props) {
             })
                 .then(response => {
                     console.log(response.data);
+                    alert("Please check your mail and proceed with Verification")
                     if(response.data.error){
                         alert(response.data.error)
                     }

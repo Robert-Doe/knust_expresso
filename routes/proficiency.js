@@ -16,13 +16,17 @@ function generateToken(proficiency) {
 }
 
 router.post('/login',async (req,res)=>{
-    const {passKey,proficiencyId}=req.body
+    const {passKey,proficiencyId}=req.body;
+
+    console.log(passKey,proficiencyId)
     const proficiencyAuth=await ProficiencyAuth.findByPk(proficiencyId)
 
     if(!proficiencyAuth){
+        console.log("Account Invalid")
         res.json({msg:"Account does not exist"})
     }else{
         if(passKey===proficiencyAuth.password){
+            console.log("Account Valid")
             const token=generateToken({id:proficiencyAuth.proficiencyId})
             res.json({msg:"Login Successful", token})
         }else{

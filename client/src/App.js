@@ -18,6 +18,7 @@ import LoginGridPage from "./pages/LoginGridPage";
 import ReferenceRequestDetailsPage from "./auth-pages/lecturer/details/ReferenceRequestDetailsPage";
 import {AuthProvider} from "./hooks/AuthContext";
 import RequestDetailsPage from "./auth-pages/student/dashboard/RequestDetailsPage";
+import StudentRequestsPage from "./auth-pages/student/dashboard/StudentRequestsPage";
 
 const App = () => {
     return (
@@ -31,6 +32,7 @@ const App = () => {
                     <Route path='/student/reference-request' exact element={<ReferenceRequestPage/>}/>
                     <Route path='/student/proficiency-request' exact element={<EnglishProficiencyRequestPage/>}/>
                     <Route path="/student/request/:requestId" element={<RequestDetailsPage/>} />
+                    <Route path="/student/requests" element={<StudentRequestsPage/>} />
                     <Route path='/signin/' exact element={<LoginGridPage/>}/>
                     <Route path='/signup/student/' exact element={<SignUpPage/>}/>
                     <Route path='/signin/student/' exact element={<SignInPage/>}/>

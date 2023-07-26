@@ -4,7 +4,6 @@ import axios from "axios";
 import DashboardNav from "../../../components/navbar/DashboardNav";
 import {AiOutlineUser, AiOutlineBank, AiOutlineFileText, AiOutlineMail} from "react-icons/ai";
 import {BsFillPersonFill} from "react-icons/bs";
-import "./dashboard.css";
 import {FiCheckCircle, FiDownload, FiLoader} from 'react-icons/fi'; // Added FiLoader for loading spinner
 import { RingLoader } from 'react-spinners';
 

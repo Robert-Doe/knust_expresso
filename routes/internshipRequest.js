@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
             requestType: 'INTERNSHIP',
             requestId: internshipRequest.id,
             date: new Date().toLocaleDateString('en-GB'),
-            paymentStatus: 'PAID',
+            paymentStatus: 'NOT-PAID',
             status: 'PENDING',
             studentId: internshipRequest.studentId,
         };

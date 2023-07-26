@@ -5,51 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dbaa9f3f-eaaf-49fe-88b0-492000ae8976" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/routes/submissions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/expresso.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/expresso.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.jx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/lecturers.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/lecturers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/hashing.js" beforeDir="false" afterPath="$PROJECT_DIR$/library/hashing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/paystack_result.json" beforeDir="false" afterPath="$PROJECT_DIR$/library/paystack_result.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/combined.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/combined.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/response.json" beforeDir="false" afterPath="$PROJECT_DIR$/logs/response.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Department.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Department.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/DepartmentAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/DepartmentAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/InternshipRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/InternshipRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Lecturer.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Lecturer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/LecturerAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/LecturerAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Proficiency.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Proficiency.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ProficiencyAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProficiencyAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ProficiencyRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ProficiencyRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ReferenceRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/ReferenceRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Remittance.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Remittance.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Request.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/Submission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/Student.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/Student.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/StudentAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/StudentAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/departments.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/departments.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/internshipRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/internshipRequest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/lecturers.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/lecturers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/payment.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/proficiency.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/proficiency.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/proficiencyRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/proficiencyRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/referenceRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/referenceRequest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/remittance.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/remittance.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/students.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/students.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/teller.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/teller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/submissions.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/submissions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -77,7 +41,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/bob/Documents/WebStormProjects/expresso/client/src/components",
+    "last_opened_file_path": "/home/bob/Documents/WebStormProjects/expresso/client/src/components/navbar",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,6 +53,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/navbar" />
       <recent name="$PROJECT_DIR$/client/src/components" />
       <recent name="$PROJECT_DIR$/client/src/auth-pages/department" />
     </key>
@@ -105,6 +71,8 @@
       <updated>1690119990965</updated>
       <workItem from="1690119993241" duration="2311000" />
       <workItem from="1690146697223" duration="21267000" />
+      <workItem from="1690278754037" duration="14540000" />
+      <workItem from="1690365886340" duration="15947000" />
     </task>
     <servers />
   </component>

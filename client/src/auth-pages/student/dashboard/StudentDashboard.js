@@ -6,16 +6,37 @@ import { BsFileText } from "react-icons/bs";
 import { HiBriefcase } from "react-icons/hi";
 import StudentNav from "../../../components/navbar/StudentNav";
 import DashboardSideNav from "./DashboardSideNav";
+import './dashboard.css'
+import ReactPaginate from "react-paginate";
 
 function StudentDashboard() {
     const [recentRequests, setRecentRequests] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // Add isLoading state\
-    const navigate = useNavigate()
+    const [currentPage, setCurrentPage] = useState(0); // Add currentPage state
+    const requestsPerPage = 5; // Set the number of requests to display per page
+    const pagesVisited = currentPage * requestsPerPage;
+    const navigate = useNavigate();
+
+
+    // Calculate the total number of pages based on the number of requests
+    const pageCount = Math.ceil(recentRequests.length / requestsPerPage);
+
+    // Update current page when the user clicks on a pagination button
+    const handlePageChange = ({ selected }) => {
+        setCurrentPage(selected);
+    };
+
 
     useEffect(() => {
         const fetchRecentRequests = async () => {
             try {
-                const response = await axios.get("http://localhost:65124/api/requests");
+                const student = JSON.parse(localStorage.getItem("student"));
+                const studentId = student ? student.studentId : null;
+
+                // Include the student ID as a query parameter in the API request
+                const response = await axios.get(
+                    `http://localhost:65124/api/requests/student/${studentId}`
+                );
                 setRecentRequests(response.data);
             } catch (error) {
                 console.error("Error fetching recent requests:", error);
@@ -74,8 +95,7 @@ function StudentDashboard() {
                                         <span className="sr-only">Loading...</span>
                                     </div>
                                 </div>
-                            ) : (
-                                // Show the table after loading
+                            ) : (<>
                                 <table className="table table-sm table-bordered">
                                     <thead className="thead-dark">
                                     <tr>
@@ -91,7 +111,9 @@ function StudentDashboard() {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {recentRequests.map((request) => (
+                                    {recentRequests.reverse()
+                                        .slice(pagesVisited, pagesVisited + requestsPerPage)
+                                        .map((request) => (
                                         <tr onClick={()=>navigate(`/student/request/${request.id}`)} key={request.id} className={request.type}>
                                             <th scope="row">{request.id}</th>
                                             <td className="studentRequestDate">{request.date}</td>
@@ -102,6 +124,18 @@ function StudentDashboard() {
                                     ))}
                                     </tbody>
                                 </table>
+                            {/* Pagination */}
+                                <ReactPaginate
+                                previousLabel={"← Previous"}
+                            nextLabel={"Next →"}
+                            pageCount={pageCount}
+                            onPageChange={handlePageChange}
+                            containerClassName={"pagination"}
+                            previousLinkClassName={"pagination__link"}
+                            nextLinkClassName={"pagination__link"}
+                            disabledClassName={"pagination__link--disabled"}
+                            activeClassName={"pagination__link--active"}
+                        /></>
                             )}
                         </div>
                     </section>

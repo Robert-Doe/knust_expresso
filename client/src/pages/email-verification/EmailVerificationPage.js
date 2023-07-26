@@ -137,7 +137,7 @@ const EmailVerificationPage = () => {
                             functionalities.
                         </p>
                         <p>If you have any questions or need further assistance, please contact our support team.</p>
-                        <a href="/login" className="login-button">Go to Login</a>
+                        <a href="/signin" className="login-button">Go to Login</a>
                     </>
                 )}
                 {verificationStatus === 'invalid' && <p>Invalid email verification token.</p>}

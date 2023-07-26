@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
@@ -6,6 +6,10 @@ function IdentificationInformationComponent({onPrevious, addStudentDetail, stude
     const idNumberRef = useRef(null);
     const idTypeRef = useRef(null);
     const navigate= useNavigate()
+
+    useEffect(()=>{
+        idNumberRef.current.value=studentDetails.idNumber??" "
+    },[])
 
     function handleIdentityInformation(e) {
         e.preventDefault()
@@ -18,12 +22,13 @@ function IdentificationInformationComponent({onPrevious, addStudentDetail, stude
             idNumber: idNumberRef.current.value
         }
 
-        localStorage.setItem('student',JSON.stringify(newDetails))
+        console.log("Before Axios and Final Push", newDetails)
 
-        axios.post('https://knustexpresso.codeden.org/api/students/', newDetails)
+        axios.post('http://localhost:65124/api/students/', newDetails)
             .then(r =>{
                 if(r.data){
                     navigate('/student/dashboard')
+                    localStorage.setItem('student',JSON.stringify(newDetails))
                 }
         }).catch(err=>alert("Error saving Information"))
 

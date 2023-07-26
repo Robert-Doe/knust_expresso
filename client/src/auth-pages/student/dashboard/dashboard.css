@@ -1,8 +1,8 @@
 .coordinator-main{
     display: grid;
     grid-template-columns: 2fr 8fr;
-    grid-template-rows: calc(100vh - 76px);
-    height: auto;
+    grid-template-rows: 1fr minmax(100vh, 1fr); /* Update the grid-template-rows */
+    min-height: 100vh;
 }
 
 .side-nav{
@@ -76,6 +76,42 @@ tbody tr{
 tr.intern:hover{
     background-color: rgba(200,200,200,0.7);
 }
+
+/*Pagination .....*/
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px; /* Add margin between table and pagination */
+}
+
+.pagination__link {
+    margin: 0 10px; /* Add more margin between pagination buttons */
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination__link:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination__link--disabled {
+    pointer-events: none;
+    color: #aaa;
+}
+
+.pagination__link--active {
+    font-weight: bold;
+    background-color: #007bff;
+    color: #fff;
+}
+
+
 
 
 

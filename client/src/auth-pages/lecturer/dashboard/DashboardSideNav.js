@@ -18,15 +18,11 @@ function DashboardSideNav() {
     return <section className={"side-nav"}>
         <ul>
             <li><NavLink className={`nav-link ${link.startsWith('/dashboard') ? style.active : ''}`}
-                         to={"/dashboard"}> <span className={"side-icon"}><AiFillHome
+                         to={"/lecturer/dashboard"}> <span className={"side-icon"}><AiFillHome
                 fontSize={20}/></span>Home</NavLink>
             </li>
-            <li><NavLink className={`nav-link ${link.startsWith('/internships') ? style.active : ''}`}
-                         to={"/student/profile"}>
-                <span className={"side-icon"}><FaUser fontSize={20}/></span>Profile</NavLink>
-            </li>
             <li><NavLink className={`nav-link ${link.startsWith('/students') ? style.active : ''}`}
-                         to={"/student/requests"}> <span
+                         to={"/lecturer/requests"}> <span
                 className={"side-icon"}><MdRateReview size={24} /></span>Requests</NavLink>
             </li>
         </ul>

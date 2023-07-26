@@ -9,7 +9,7 @@ const DepartmentAuth = require("../models/DepartmentAuth");
 
 
 
-const secretKey = process.env.DEPARTMENT_ACCESS_TOKEN_SECRET;
+const secretKey = process.env.LECTURER_ACCESS_TOKEN_SECRET;
 
 function generateToken(lecturer) {
     const payload = {id: lecturer.id, role: 'lecturer'};
@@ -48,8 +48,9 @@ router.post('/login',async (req,res)=>{
         res.json({msg:"Account does not exist"})
     }else{
         if(passKey===lecturerAuth.password){
+            const lecturer= await Lecturer.findByPk(staffId)
             const token=generateToken({id:lecturerAuth.staffId})
-            res.json({msg:"Login Successful", token})
+            res.json({msg:"Login Successful", token,lecturer})
         }else{
             res.json({msg:"Login failed: Password Incorrect"})
         }
