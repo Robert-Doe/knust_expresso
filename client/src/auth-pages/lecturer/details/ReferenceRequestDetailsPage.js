@@ -69,6 +69,7 @@ function ReferenceRequestDetailsPage() {
 
             const formData = new FormData();
             formData.append("file", file);
+            formData.append("requestId",requestId)
 
             // Replace 'YOUR_SERVER_ENDPOINT' with your actual server endpoint for handling file uploads
             const response = await axios.post("http://localhost:65124/api/submissions/upload-recommendation", formData);

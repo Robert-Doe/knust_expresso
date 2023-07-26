@@ -1,7 +1,7 @@
 import {GiHamburgerMenu, GiPerson} from "react-icons/gi";
 import React, {useContext, useState} from "react";
 import {NavLink, useNavigate} from 'react-router-dom';
-import './LecturerNav.css'
+import './StudentNav.css'
 import logo from "../../assets/logo.png"
 import {MdOutlineVerifiedUser} from "react-icons/md";
 import {AiOutlineProfile} from "react-icons/ai";
