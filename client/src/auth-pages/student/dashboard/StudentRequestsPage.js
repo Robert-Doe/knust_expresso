@@ -69,7 +69,7 @@ function StudentRequestsPage() {
                             </tr>
                             </thead>
                             <tbody>
-                            {currentRequests.reverse().map((request) => (
+                            {currentRequests.map((request) => (
                                 <tr key={request.id} onClick={()=>navigate(`/student/request/${request.id}`)}>
                                     <td>{request.id}</td>
                                     <td>{request.date}</td>

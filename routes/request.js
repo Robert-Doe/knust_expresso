@@ -16,12 +16,17 @@ router.get("/student/:studentId", async (req, res) => {
         if (!studentId) {
             return res.json([]);
         }
+        const orderOption = [
+            ['createdAt', 'DESC'], // For example, columnName = 'createdAt' and sortOrder = 'DESC'
+        ];
+
 
         // If studentId is provided, filter requests based on the studentId
         const requests = await Request.findAll({
             where: {
                 studentId: studentId,
             },
+            order:orderOption
         });
 
         res.json(requests);

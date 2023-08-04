@@ -169,7 +169,10 @@ router.post('/', upload.fields([{name: 'cvFile'}, {name: 'transcriptFile'}]), as
 // Get all reference requests
 router.get('/', async (req, res) => {
     try {
-        const referenceRequests = await ReferenceRequest.findAll();
+        const orderOption = [
+            ['createdAt', 'DESC'], // For example, columnName = 'createdAt' and sortOrder = 'DESC'
+        ];
+        const referenceRequests = await ReferenceRequest.findAll({order:orderOption});
         res.json(referenceRequests);
     } catch (error) {
         res.status(500).json({error: error.message});

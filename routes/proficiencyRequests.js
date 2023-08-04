@@ -30,7 +30,10 @@ const upload = multer({ storage });
 // Get all proficiency requests
 router.get('/', async (req, res) => {
     try {
-        const proficiencyRequests = await ProficiencyRequest.findAll();
+        const orderOption = [
+            ['createdAt', 'DESC'], // For example, columnName = 'createdAt' and sortOrder = 'DESC'
+        ];
+        const proficiencyRequests = await ProficiencyRequest.findAll({order:orderOption});
         res.status(200).json(proficiencyRequests);
     } catch (error) {
         console.error('Error fetching proficiency requests:', error);

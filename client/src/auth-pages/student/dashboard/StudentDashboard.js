@@ -111,7 +111,7 @@ function StudentDashboard() {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {recentRequests.reverse()
+                                    {recentRequests
                                         .slice(pagesVisited, pagesVisited + requestsPerPage)
                                         .map((request) => (
                                         <tr onClick={()=>navigate(`/student/request/${request.id}`)} key={request.id} className={request.type}>

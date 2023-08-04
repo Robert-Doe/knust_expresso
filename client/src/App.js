@@ -19,6 +19,7 @@ import ReferenceRequestDetailsPage from "./auth-pages/lecturer/details/Reference
 import {AuthProvider} from "./hooks/AuthContext";
 import RequestDetailsPage from "./auth-pages/student/dashboard/RequestDetailsPage";
 import StudentRequestsPage from "./auth-pages/student/dashboard/StudentRequestsPage";
+import DepartmentDashboard from "./auth-pages/department/details/DepartmentDashboard";
 
 const App = () => {
     return (
@@ -42,6 +43,7 @@ const App = () => {
                     <Route path='/student/dashboard/' exact element={<StudentDashboard/>}/>
                     <Route path='/lecturer/dashboard/' exact element={<LecturerDashboard/>}/>
                     <Route path='/lecturer/reference-requests/:requestId' exact element={<ReferenceRequestDetailsPage/>}/>
+                    <Route path='/department/internship-requests/:requestId' exact element={<DepartmentDashboard/>}/>
                 </Routes>
             </Router>
         </AuthProvider>

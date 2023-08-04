@@ -1,5 +1,5 @@
 .home{
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(90.4deg,#000000 0.33%, rgba(0,0,0,0) 99.65%),url("../../assets/header_bg.jpg");
     background-size: cover;
     background-position: center;
@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 2rem 6rem;
+    padding: 2rem 2rem;
 }
 
 
@@ -23,7 +23,7 @@
 
 
 .home__navbar-links_logo{
-    margin-right: 2rem;
+    margin-right: 1rem;
 }
 
 .home__navbar-links_logo img{
@@ -56,12 +56,12 @@
 
 
 .homepage-button{
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.7rem;
     color:black;
     background: var(--grace-yellow);
     font-family: var(--font-family);
     font-weight: 500;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 25px;
     border: none;
     outline: none;
@@ -220,6 +220,13 @@
 
     }
 
+    h1.big__text{
+        font-size: 1.5rem;
+    }
+
+    h1.big__text + p{
+        font-size: 0.8rem;
+    }
     
 }
 

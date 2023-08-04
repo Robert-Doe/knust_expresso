@@ -6,6 +6,7 @@ import {AiOutlineUser, AiOutlineBank, AiOutlineFileText, AiOutlineMail} from "re
 import {BsFillPersonFill} from "react-icons/bs";
 import {FiCheckCircle, FiDownload, FiLoader} from 'react-icons/fi'; // Added FiLoader for loading spinner
 import { RingLoader } from 'react-spinners';
+import LecturerNav from "../../../components/navbar/LecturerNav";
 
 
 function ReferenceRequestDetailsPage() {
@@ -94,7 +95,7 @@ function ReferenceRequestDetailsPage() {
 
     return (
         <section>
-            <DashboardNav/>
+            <LecturerNav/>
             <main className={"container mb-5"}>
                 {isLoading ? ( // Conditional rendering based on isLoading state
                         <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>

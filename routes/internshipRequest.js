@@ -7,7 +7,10 @@ const Request = require('../models/Request');
 // Get all internship requests
 router.get('/', async (req, res) => {
     try {
-        const internshipRequests = await InternshipRequest.findAll();
+        const orderOption = [
+            ['createdAt', 'DESC'], // For example, columnName = 'createdAt' and sortOrder = 'DESC'
+        ];
+        const internshipRequests = await InternshipRequest.findAll({order:orderOption});
         res.json(internshipRequests);
     } catch (error) {
         res.status(500).json({ error: error.message });
